@@ -1,0 +1,27 @@
+h1 {
+    color: rgb(206, 233, 54);
+}
+
+h2 {
+    color: blue;
+}
+
+img {
+    width: 50%;
+ 
+}
+
+.box1 {
+    background-color: blanchedalmond;
+    width: 50%;
+    margin-left: 5% ;
+    margin-bottom: 10px;
+    padding: 5px;
+    align-content: right;
+    border: red dashed 25px;
+
+}
+p {
+    margin: 0;
+    padding: 0;
+}
