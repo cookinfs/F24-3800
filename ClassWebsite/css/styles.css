@@ -89,3 +89,19 @@ img {
 .box p {
     text-align: center;
 }
+
+.info-section {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    gap: 20px; /* Space between image and text */
+    margin: 20px 15px;
+}
+
+.info-section img {
+    max-width: 300px; /* Adjust width as needed */
+    height: auto;
+}
+
+.info-text {
+    max-width: 500px; /* Adjust width for text section */
+}
