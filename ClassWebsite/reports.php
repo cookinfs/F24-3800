@@ -50,6 +50,7 @@
                     <th scope="col">Last Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Comment</th>
+                    <th>DELETE</th>
                 </tr>
             </thead>
 
@@ -70,6 +71,12 @@
                 <td><?php echo $lastName ?></td>
                 <td><?php echo $email ?></td>
                 <td><?php echo $comment ?></td>
+
+                <!-- Add the delete and edit buttons -->
+                 <td>
+                    <a href="php/edit.php?Edit=<?php echo $row['id']?>" class="bi bi-pencil-square"></a>
+                    <a href="php/delete.php?Del=<?php echo $row['id']?>" class="bi bi-trash"></a>
+                 </td>
             </tr>
             <?php
             }

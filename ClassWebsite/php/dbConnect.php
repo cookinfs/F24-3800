@@ -3,7 +3,7 @@
 /* Once this file is created, you can test it by navigating to the URL/dbConnect.php */
 
 /* Variables for the database connection parameters */
-$dbServername = "128.198.162.191";
+$dbServername = "localhost";
 $dbUsername = "infs3800";
 $dbPassword = "webdev";
 $dbName = "infs3800";
