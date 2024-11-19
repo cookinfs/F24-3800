@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Cool Pictures</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/pictures.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/pictureGallery.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery/css/lightgallery-bundle.min.css">
+</head>
+<body class="bg-light">
+
+    <!-- Navigation -->
+    <div class="navigation">
+        <nav>
+    
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="pictures.html">Cool Pictures</a>
+                <li><a href="pictureGallery.html">Gallery</a>
+                <li><a href="contacts.php">Contact</a></li>
+                <li><a href="reports.php">Reports</a></li>
+            </ul>
+    
+        </nav>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Check out my cool pictures</h1>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Upload Form -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <form method="POST" action="./php/upload.php" enctype="multipart/form-data" class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="file" class="form-label">Upload a picture:</label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="file" name="file" id="file" accept="image/*" class="form-control" required>
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary">Upload</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Gallery Container -->
+        <div id="lightgallery" class="gallery-container"></div>
+    </div>
+
+    <!-- LightGallery JS -->
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery/lightgallery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery/plugins/thumbnail/lg-thumbnail.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery/plugins/zoom/lg-zoom.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            console.log("Fetching gallery data from images.php...");
+
+            // Fetch gallery data
+            $.getJSON('./php/images.php', function (data) {
+                console.log('Fetched Gallery Data:', data);
+
+                // Populate the gallery container
+                const galleryContainer = $('#lightgallery');
+                data.forEach(item => {
+                    const galleryItem = `
+                        <a href="${item.src}" class="gallery-item" data-lg-size="1400-933" data-title="${item.title}">
+                            <img src="${item.src}" alt="${item.title}" class="gallery-thumbnail">
+                        </a>
+                    `;
+                    galleryContainer.append(galleryItem);
+                });
+
+                // Initialize lightGallery
+                lightGallery(document.getElementById('lightgallery'), {
+                    plugins: [lgThumbnail, lgZoom],
+                    thumbnail: true,
+                    zoom: true,
+                    speed: 500
+                });
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+                console.error('Failed to load images.php:', textStatus, errorThrown);
+            });
+        });
+    </script>
+</body>
+</html>

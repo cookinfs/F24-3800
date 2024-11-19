@@ -1,0 +1,23 @@
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 10px;
+    margin: 0; /* Remove default margin */
+    padding-right: 40px;
+    width: 100vw; /* Set width to full viewport width */
+    
+}
+
+.gallery-thumbnail {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+   
+}
+
+.gallery-thumbnail:hover {
+    transform: scale(1.05);
+}
+
