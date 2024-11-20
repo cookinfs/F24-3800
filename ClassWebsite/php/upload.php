@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
-    $targetDir = './gallery/';
+    $targetDir = '../gallery/';
     $targetFile = $targetDir . basename($_FILES['file']['name']);
     $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 
     // Upload file
     if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFile)) {
-        header("Location: ../pictures.html");
+        header("Location: ../pictureGallery.html");
         exit;
     } else {
         echo "Sorry, there was an error uploading your file.";

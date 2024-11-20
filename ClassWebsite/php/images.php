@@ -2,7 +2,7 @@
 $dir = "../gallery/";
 $images = glob($dir . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
 $data = [];
-$baseUrl = "http://localhost/"; // Replace with your actual base URL
+$baseUrl = "http://128.198.162.191/webdev/gallery/"; // Replace with your actual base URL
 
 foreach ($images as $image) {
     $data[] = [
